@@ -28,7 +28,7 @@ export default function About() {
         </div>
         <div className="w-full md:w-1/2 space-y-4">
           <p className="text-muted-foreground text-sm sm:text-base">
-            I am a skilled full-stack software engineer with over a year of
+            I am a skilled full-stack software engineer with over two years of
             experience working remotely for startups in small teams of 1 to 15
             members. I excel at building user-friendly products and delivering
             innovative solutions that precisely meet customer needs. I enjoy

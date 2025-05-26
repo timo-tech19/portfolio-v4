@@ -11,6 +11,16 @@ const workHistory = [
     cta: true,
   },
   {
+    company: "Fitmy (Modern Gym Management System)",
+    position: "Product Engineer (Co-founder)",
+    period: "Jan 2025 - Present",
+    description: [
+      "Streamlined gym operations with robust tools for member management and dynamic pricing.",
+      "Delivered insightful analytics to empower data-driven business decisions for gym owners.",
+      "Enhanced user experience through an intuitive interface, boosting efficiency and member engagement.",
+    ],
+  },
+  {
     company: "Stat-ly (Data Analytics Platform)",
     position: "Software Engineer",
     period: "2022",

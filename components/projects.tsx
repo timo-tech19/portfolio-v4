@@ -2,11 +2,36 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { ChevronLeft, ChevronRight, Check, Github } from "lucide-react";
+import { ChevronLeft, ChevronRight, Check, Github, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
 
 const projects = [
+  {
+    title: "Fitmy – Modern Gym Management System",
+    description:
+      "A platform to streamline gym operations and enhance member experience with robust management tools.",
+    image: "/fitmy.png",
+    features: [
+      "Unified platform for gym owners to manage members, pricing plans, and business operations from a single dashboard",
+      "Secure authentication and authorization system for both staff and members",
+      "Comprehensive analytics and reporting to track gym performance",
+      "Responsive and accessible user interface for seamless experience across devices",
+      "Robust form and state management for efficient handling of member data and administrative tasks",
+    ],
+    techStack: [
+      "TypeScript",
+      "Next.js 15",
+      "Prisma",
+      "PostgreSQL",
+      "Tailwind CSS",
+      "ShadCN UI",
+      "Zustand",
+      "React Hook Form",
+      "Zod",
+    ],
+    liveUrl: "https://www.fitmyapp.com",
+  },
   {
     title: "Note Taking App",
     description:
@@ -131,16 +156,30 @@ export default function Projects() {
                   ))}
                 </div>
               </div>
-              <Button asChild>
-                <a
-                  href={projects[currentProject].githubUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Github className="mr-2 h-4 w-4" />
-                  View on GitHub
-                </a>
-              </Button>
+              {/* Button logic updated below */}
+              {projects[currentProject].liveUrl ? (
+                <Button asChild>
+                  <a
+                    href={projects[currentProject].liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Globe className="h-4 w-4" />
+                    Live Demo
+                  </a>
+                </Button>
+              ) : projects[currentProject].githubUrl ? (
+                <Button asChild>
+                  <a
+                    href={projects[currentProject].githubUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Github className="h-4 w-4" />
+                    View on GitHub
+                  </a>
+                </Button>
+              ) : null}
             </div>
           </motion.div>
         </AnimatePresence>
