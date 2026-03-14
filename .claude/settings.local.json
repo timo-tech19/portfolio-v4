@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Skill(vercel-react-best-practices)",
+      "Skill(frontend-design)",
+      "WebSearch"
+    ]
+  }
+}

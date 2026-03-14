@@ -1,0 +1,177 @@
+@import "tailwindcss";
+
+/* ============================================
+   WARM NEUTRAL — Design System
+   ============================================ */
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--text-primary);
+  --color-surface: var(--surface);
+  --color-surface-hover: var(--surface-hover);
+  --color-border: var(--border);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-dim: var(--accent-dim);
+  --color-accent-glow: var(--accent-glow);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+  --color-success: var(--success);
+  --color-error: var(--error);
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-space-grotesk);
+  --font-mono: var(--font-jetbrains-mono);
+}
+
+/* ============================================
+   CSS CUSTOM PROPERTIES (always available)
+   ============================================ */
+
+:root {
+  /* Base */
+  --background: #09090b;
+  --surface: #111113;
+  --surface-hover: #19191b;
+  --border: #1c1c1f;
+
+  /* Accent — muted gold */
+  --accent: #c4a97d;
+  --accent-hover: #d4bc94;
+  --accent-dim: rgba(196, 169, 125, 0.15);
+  --accent-glow: rgba(196, 169, 125, 0.08);
+
+  /* Text */
+  --text-primary: #e8e0d4;
+  --text-secondary: #9a9590;
+  --text-muted: #5c5955;
+
+  /* Semantic */
+  --success: #8ab580;
+  --error: #c47070;
+
+  /* Dimensions */
+  --navbar-height: 4rem;
+}
+
+/* ============================================
+   BASE STYLES — must be in @layer base so
+   Tailwind utilities can override them
+   ============================================ */
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: auto; /* Lenis handles smooth scrolling */
+  }
+
+  body {
+    background: var(--background);
+    color: var(--text-primary);
+    font-family: var(--font-sans), system-ui, sans-serif;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background: var(--accent);
+    color: var(--background);
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--background);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--accent);
+  }
+}
+
+/* ============================================
+   COMPONENT STYLES — in @layer components so
+   utilities can still override them
+   ============================================ */
+
+@layer components {
+  /* Accent text (replaces gradient-text) */
+  .accent-text {
+    color: var(--accent);
+  }
+
+  /* Keep gradient-text as alias during migration */
+  .gradient-text {
+    color: var(--accent);
+  }
+
+  /* Glass morphism */
+  .glass {
+    background: rgba(17, 17, 19, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--border);
+  }
+
+  /* Glow effect */
+  .glow-accent {
+    box-shadow: 0 0 20px var(--accent-glow), 0 0 40px rgba(196, 169, 125, 0.05);
+  }
+
+  .text-glow-accent {
+    text-shadow: 0 0 20px var(--accent-glow);
+  }
+
+  /* Accent border */
+  .accent-border {
+    border-color: var(--accent);
+  }
+
+  /* Grain / noise overlay */
+  .grain-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    pointer-events: none;
+    opacity: 0.02;
+  }
+
+  /* Chapter sections */
+  .chapter {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    overflow: hidden;
+  }
+}
+
+/* ============================================
+   REDUCED MOTION
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
